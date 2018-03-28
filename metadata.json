@@ -1,0 +1,15 @@
+{
+  "name": "puppet-spectre_meltdown",
+  "version": "0.1.0",
+  "author": "kevincoakley",
+  "summary": "Disable Spectre And Meltdown kernel patches, create facts to track patch status",
+  "license": "Apache-2.0",
+  "source": "https://github.com/kevincoakley/puppet-spectre_meltdown",
+  "project_page": "https://github.com/kevincoakley/puppet-spectre_meltdown",
+  "issues_url": "https://github.com/kevincoakley/puppet-spectre_meltdown/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
