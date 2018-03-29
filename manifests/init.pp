@@ -1,48 +1,29 @@
 # Class: spectre_meltdown
 # ===========================
 #
-# Full description of class spectre_meltdown here.
+# Disable Spectre And Meltdown kernel patches (CVE-2017-5754 and CVE-2017-5715) by
+#   adding "nopti" and "spectre_v2=off" to kernel command line for grub.
 #
 # Parameters
 # ----------
 #
-# Document parameters here.
+# @param ensure
+#   set to present to disable Spectre And Meltdown kernel patches
 #
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
-#
-# Variables
-# ----------
-#
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
-#
-# Examples
-# --------
-#
-# @example
-#    class { 'spectre_meltdown':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
-#
-# Authors
-# -------
-#
-# Author Name <author@domain.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2018 Your name here, unless otherwise noted.
-#
-class spectre_meltdown {
+class spectre_meltdown (
+  $ensure = absent,
+) {
+  case $ensure {
+    present, absent: {
+      kernel_parameter { 'nopti':
+        ensure => $ensure,
+      }
 
-
+      kernel_parameter { 'spectre_v2':
+        ensure => $ensure,
+        value  => off,
+      }
+    }
+    default: { }
+  }
 }
