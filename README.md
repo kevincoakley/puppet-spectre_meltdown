@@ -7,14 +7,11 @@
 Disable Spectre And Meltdown kernel patches (CVE-2017-5754 and CVE-2017-5715) by 
 adding "nopti" and "spectre_v2=off" to kernel command line for grub. 
 
-Adds facts ibpb_enabled, ibrs_enabled, pti_enabled to record the value of 
-/sys/kernel/debug/x86/ibpb_enabled, /sys/kernel/debug/x86/ibrs_enabled and 
-/sys/kernel/debug/x86/pti_enabled. 
-
-If the values of ibpb_enabled and ibrs_enabled are 0 then the patches for CVE-2017-5715 are 
-disabled. 
-
-If the value of pti_enabled is 0 then the patch for CVE-2017-5754 is disabled.
+Adds facts meltdown, spectre_v1, spectre_v2, ibpb_enabled, ibrs_enabled, pti_enabled 
+to record the value of /sys/devices/system/cpu/vulnerabilities/meltdown, 
+/sys/devices/system/cpu/vulnerabilities/spectre_v1, 
+/sys/devices/system/cpu/vulnerabilities/spectre_v2, /sys/kernel/debug/x86/ibpb_enabled, 
+/sys/kernel/debug/x86/ibrs_enabled and /sys/kernel/debug/x86/pti_enabled. 
 
 ## Usage
 
