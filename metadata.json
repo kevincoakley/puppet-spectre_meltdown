@@ -1,6 +1,6 @@
 {
-  "name": "puppet-spectre_meltdown",
-  "version": "0.1.1",
+  "name": "kevincoakley-spectre_meltdown",
+  "version": "0.1.2",
   "author": "kevincoakley",
   "summary": "Disable Spectre And Meltdown kernel patches, create facts to track patch status",
   "license": "Apache-2.0",
