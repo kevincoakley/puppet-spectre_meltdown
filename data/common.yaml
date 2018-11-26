@@ -1,3 +1,4 @@
 ---
 spectre_meltdown:
   ensure: absent
+  spectre_v4: absent
