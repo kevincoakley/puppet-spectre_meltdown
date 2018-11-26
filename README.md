@@ -4,27 +4,40 @@
 
 ## Description
 
-Disable Spectre And Meltdown kernel patches (CVE-2017-5754 and CVE-2017-5715) by 
-adding "nopti" and "spectre_v2=off" to kernel command line for grub. 
+Disable Spectre And Meltdown kernel patches (CVE-2017-5754, CVE-2017-5715, CVE-2018-3639) by adding "nopti", "spectre_v2=off" and "spec_store_bypass_disable=off" to kernel command line for grub.
 
-Adds facts meltdown, spectre_v1, spectre_v2, ibpb_enabled, ibrs_enabled, pti_enabled 
-to record the value of /sys/devices/system/cpu/vulnerabilities/meltdown, 
-/sys/devices/system/cpu/vulnerabilities/spectre_v1, 
-/sys/devices/system/cpu/vulnerabilities/spectre_v2, /sys/kernel/debug/x86/ibpb_enabled, 
-/sys/kernel/debug/x86/ibrs_enabled and /sys/kernel/debug/x86/pti_enabled. 
+Adds facts:
+
+* meltdown 
+* spectre_v1
+* spectre_v2
+* ibpb_enabled 
+* ibrs_enabled
+* pti_enabled 
+* cpu_microcode
+* l1tf
+* retp_enabled
+* spec_store_bypass
+* ssbd_enabled
 
 ## Usage
+
+**ensure enables/disables CVE-2017-5754 and CVE-2017-5715**
+
+**spectre_v4 enables/disables CVE-2018-3639**
 
 To disable Spectre And Meltdown kernel patches:
 
     class { 'spectre_meltdown':
-      ensure => present,
+      ensure     => present,
+      spectre_v4 => present,
     }
     
 To re-enable Spectre And Meltdown kernel patches: **
             
     class { 'spectre_meltdown':
-      ensure => absent,
+      ensure     => absent,
+      spectre_v4 => absent,
     }
     
 \** Note: Re-enabling the kernel patches may not be all that is required to project your system
